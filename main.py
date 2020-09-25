@@ -15,6 +15,10 @@ jeu = Jeu(fen)
 while 1:
     # détection si une touche a été apuyée
     # fen.bind("<keyPressed>")
+
+    # mise à jour du jeu
+    jeu.miseAJour()
+
     fen.update_idletasks() # met à jour les tâches de la fenêtre
     fen.update() #met à jour la fenêtre
     time.sleep(0.01)

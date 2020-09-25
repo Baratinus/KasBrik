@@ -1,4 +1,4 @@
-# from balle import Balle
+from balle import Balle
 # from raquette import Raquette
 import tkinter as tk
 
@@ -10,7 +10,7 @@ class Jeu:
         self.hauteur_fenetre = 600
 
         # self.raquette = Raquette(self)
-        # self.balle = Balle(self)
+        self.balle = Balle(self)
 
         self.canevas = tk.Canvas(fenetre,width=self.largeur_fenetre,height=self.hauteur_fenetre)
 
@@ -18,6 +18,12 @@ class Jeu:
         self.touche_pressee = {}
 
     def miseAJour(self):
+        # partie temporaire
+        if self.balle.objet != 0:
+            self.canevas.delete(self.balle.objet)
+        self.balle.dessiner()
+
+        self.canevas.pack()
         
 
     def toucheAppuyee(self,touche):
