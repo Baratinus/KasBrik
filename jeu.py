@@ -23,7 +23,7 @@ class Jeu:
             self.canevas.delete(self.balle.objet)
         self.balle.dessiner()
         self.raquette.image
-
+        
         self.canevas.pack()
         
 
