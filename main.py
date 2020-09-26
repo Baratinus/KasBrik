@@ -5,16 +5,29 @@ import time
 WIDTH_SCREEN = 600
 HEIGHT_SCREEN = 600
 
-fen = tk.Tk()
+def close_window():
+  global running
+  running = False
+  print ("Game closed")
 
+fen = tk.Tk()
+fen.protocol("WM_DELETE_WINDOW", close_window)
+
+running = True
 fen.config(width=WIDTH_SCREEN,height=HEIGHT_SCREEN)
+fen.resizable(width=False, height=False)
 fen.title('Jeu')
 
 jeu = Jeu(fen)
 
-while 1:
+while running :
+
+    if not running: 
+        break
+
     # détection si une touche a été apuyée
     # fen.bind("<keyPressed>")
+
 
     # mise à jour du jeu
     jeu.miseAJour()
