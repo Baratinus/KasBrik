@@ -17,6 +17,7 @@ class Raquette :
         self.x = (jeu.largeur_fenetre / 2) - (self.largeur / 2)
         self.y = jeu.hauteur_fenetre - jeu.hauteur_fenetre / 8
         self.image = self._dessiner()
+        self.valeur_collision = 0
 
     def _dessiner (self) :
         

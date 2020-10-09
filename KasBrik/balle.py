@@ -1,4 +1,5 @@
 import tkinter as tk
+import jeu
 
 class Balle:
     """
@@ -20,4 +21,26 @@ class Balle:
         return None
 
     def deplacer(self): #Bouger la balle dans le canevas
+        if self.jeu.raquette.valeur_collision == 0:
+            self.jeu.canevas.move(self.jeu.balle,self.vitesse_x,self.vitesse_y)
+        elif self.jeu.raquette.valeur_collision == 1:
+            self.vitesse_x = -1
+            self.vitesse_y = -2
+            self.jeu.canevas.move(self.jeu.balle,self.vitesse_x,self.vitesse_y)
+        elif self.jeu.raquette.valeur_collision == 2:
+            self.vitesse_x = -2
+            self.vitesse_y = -1
+            self.jeu.canevas.move(self.jeu.balle,self.vitesse_x,self.vitesse_y)
+        elif self.jeu.raquette.valeur_collision == 3:
+            self.vitesse_x = -2
+            self.vitesse_y = 0
+            self.jeu.canevas.move(self.jeu.balle,self.vitesse_x,self.vitesse_y)
+        elif self.jeu.raquette.valeur_collision == 4:
+            self.vitesse_x = -2
+            self.vitesse_y = 1
+            self.jeu.canevas.move(self.jeu.balle,self.vitesse_x,self.vitesse_y)
+        elif self.jeu.raquette.valeur_collision == 5:
+            self.vitesse_x = -1
+            self.vitesse_y = 2
+            self.jeu.canevas.move(self.jeu.balle,self.vitesse_x,self.vitesse_y)
         return None
