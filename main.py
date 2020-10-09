@@ -25,7 +25,7 @@ while running :
     if not running: 
         break
 
-    # détection si une touche a été apuyée
+    # détection si une touche est apuyée
     fen.bind("<KeyPress>", jeu.toucheAppuyee)
     fen.bind("<KeyRelease>", jeu.toucheRelachee)
 
