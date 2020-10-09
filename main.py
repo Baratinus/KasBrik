@@ -2,8 +2,8 @@ from jeu import Jeu
 import tkinter as tk
 import time
 
-WIDTH_SCREEN = 600
-HEIGHT_SCREEN = 600
+LARGEUR_FENETRE = 600
+HAUTEUR_FENETRE = 600
 
 def close_window():
   global running
@@ -14,11 +14,11 @@ fen = tk.Tk()
 fen.protocol("WM_DELETE_WINDOW", close_window)
 
 running = True
-fen.config(width=WIDTH_SCREEN,height=HEIGHT_SCREEN)
+fen.config(width=LARGEUR_FENETRE,height=HAUTEUR_FENETRE)
 fen.resizable(width=False, height=False)
 fen.title('Jeu')
 
-jeu = Jeu(fen)
+jeu = Jeu(fen, LARGEUR_FENETRE, HAUTEUR_FENETRE)
 
 while running :
 
@@ -26,8 +26,8 @@ while running :
         break
 
     # détection si une touche a été apuyée
-    # fen.bind("<keyPressed>")
-
+    fen.bind("<KeyPress>", jeu.toucheAppuyee)
+    fen.bind("<KeyRelease>", jeu.toucheRelachee)
 
     # mise à jour du jeu
     jeu.miseAJour()

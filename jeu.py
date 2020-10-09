@@ -3,11 +3,11 @@ from raquette import Raquette
 import tkinter as tk
 
 class Jeu:
-    def __init__(self,fenetre):
+    def __init__(self,fenetre,largeur_fenetre:int,hauteur_fenetre:int):
         self.fenetre = fenetre
 
-        self.largeur_fenetre = 600
-        self.hauteur_fenetre = 600
+        self.largeur_fenetre = largeur_fenetre
+        self.hauteur_fenetre = hauteur_fenetre
 
         self.canevas = tk.Canvas(fenetre,width=self.largeur_fenetre,height=self.hauteur_fenetre)
 
@@ -24,15 +24,39 @@ class Jeu:
         self.balle.dessiner()
         self.raquette.image
         
+        # Vérification si une touche est appuyer et exécuter l'action
+        # if self.touche_pressee.get("q"):
+		# 	self.raquette.deplacementGuache()
+		# if self.touche_pressee.get("d"):
+		# 	self.raquette.deplacementDroite()
+
         self.canevas.pack()
-        
 
+    def verfierTouche(fonction):
+
+        def fonction_modifiee(self, touche):
+            if touche.keysym in self.touche_possible:
+                return fonction(self, touche)
+
+        return fonction_modifiee
+
+    @verfierTouche
     def toucheAppuyee(self,touche):
-        touche = touche.keysym
+        """Si une touche est apuyée
 
+        Args:
+            touche (tkinter.Event): touche préssée
+        """
+        print(type(touche))
+        touche = touche.keysym
         self.touche_pressee[touche] = True
 
+    @verfierTouche
     def toucheRelachee(self,touche):
-        touche = touche.keysym
+        """Si une touche est relachée
 
+        Args:
+            touche (tkinter.Event): touche relachée
+        """
+        touche = touche.keysym
         self.touche_pressee[touche] = False
