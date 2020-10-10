@@ -32,7 +32,7 @@ class Jeu:
 
         self.canevas.pack()
 
-    def verfierTouche(self, fonction):
+    def verifierTouche(self, fonction):
 
         def fonction_modifiee(self, touche):
             if touche.keysym in self.touche_possible:
@@ -40,7 +40,7 @@ class Jeu:
 
         return fonction_modifiee
 
-    @verfierTouche
+    @verifierTouche
     def toucheAppuyee(self,touche):
         """Si une touche est apuyée
 
@@ -50,7 +50,7 @@ class Jeu:
         touche = touche.keysym
         self.touche_pressee[touche] = True
 
-    @verfierTouche
+    @verifierTouche
     def toucheRelachee(self,touche):
         """Si une touche est relachée
 
