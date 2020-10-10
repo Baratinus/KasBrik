@@ -20,7 +20,7 @@ class Balle:
         self.objet = self.jeu.canevas.create_oval(self.x, self.y, self.x+self.rayon, self.y+self.rayon, fill="#ffffff")
         return None
 
-    def deplacer(self): #Bouger la balle dans le canevas
+    def deplacer(self): #Bouger la balle dans le canevas pour la raquette
         if self.jeu.raquette.valeur_collision == 0:
             self.jeu.canevas.move(self.jeu.balle,self.vitesse_x,self.vitesse_y)
         elif self.jeu.raquette.valeur_collision == 1:
