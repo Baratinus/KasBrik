@@ -27,12 +27,12 @@ class Raquette :
 
     def aller_Droite (self) :
 
-        pass
+        self.x += 15
 
 
     def aller_Gauche (self) :
 
-        pass
+        self.y -= 15
 
 
     def collision (self, x) :

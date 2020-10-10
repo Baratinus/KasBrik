@@ -2,7 +2,7 @@ from balle import Balle
 from raquette import Raquette
 import tkinter as tk
 
-class Jeu:
+class Jeu :
     def __init__(self,fenetre,largeur_fenetre:int,hauteur_fenetre:int):
         self.fenetre = fenetre
 
@@ -24,15 +24,15 @@ class Jeu:
         self.balle.dessiner()
         self.raquette.image
         
-        # Vérification si une touche est appuyer et exécuter l'action
-        # if self.touche_pressee.get("q"):
-		# 	self.raquette.deplacementGuache()
-		# if self.touche_pressee.get("d"):
-		# 	self.raquette.deplacementDroite()
+    # Vérification si une touche est appuyer et exécuter l'action
+        if self.touche_pressee.get("q") :
+            self.raquette.aller_Gauche()
+        if self.touche_pressee.get("d") :
+            self.raquette.aller_Droite() 
 
         self.canevas.pack()
 
-    def verifierTouche(self, fonction):
+    def verifierTouche(self):
 
         def fonction_modifiee(self, touche):
             if touche.keysym in self.touche_possible:
