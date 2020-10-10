@@ -47,7 +47,6 @@ class Jeu:
         Args:
             touche (tkinter.Event): touche préssée
         """
-        print(type(touche))
         touche = touche.keysym
         self.touche_pressee[touche] = True
 
