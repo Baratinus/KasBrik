@@ -32,7 +32,7 @@ class Jeu:
 
         self.canevas.pack()
 
-    def verfierTouche(fonction):
+    def verfierTouche(self, fonction):
 
         def fonction_modifiee(self, touche):
             if touche.keysym in self.touche_possible:
