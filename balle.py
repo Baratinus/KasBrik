@@ -54,5 +54,5 @@ class Balle:
             self.jeu.canevas.move(self.objet,self.vitesse_x,self.vitesse_y)
         self.x += self.vitesse_x
         self.y += self.vitesse_y
-        # print(self.x,self.y,self.x + self.rayon*2,self.y-self.rayon*2,self.jeu.raquette.collision(self.x+self.rayon))
+        # print(self.x,self.y,self.x + self.rayon*2,self.y-self.rayon*2,self.jeu.raquette.collision(self.x+self.rayon)) # Ne pas enlever du commentaire sauf pour debug
         return None
