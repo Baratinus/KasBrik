@@ -2,6 +2,14 @@ from balle import Balle
 from raquette import Raquette
 import tkinter as tk
 
+def verifierTouche(fonction):
+
+        def fonction_modifiee(self, touche):
+            if touche.keysym in self.touche_possible:
+                return fonction(self, touche)
+
+        return fonction_modifiee
+
 class Jeu :
     def __init__(self,fenetre,largeur_fenetre:int,hauteur_fenetre:int):
         self.fenetre = fenetre
@@ -31,14 +39,6 @@ class Jeu :
             self.raquette.aller_Droite() 
 
         self.canevas.pack()
-
-    def verifierTouche(self):
-
-        def fonction_modifiee(self, touche):
-            if touche.keysym in self.touche_possible:
-                return fonction(self, touche)
-
-        return fonction_modifiee
 
     @verifierTouche
     def toucheAppuyee(self,touche):
