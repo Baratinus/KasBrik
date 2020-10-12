@@ -23,24 +23,24 @@ class Balle:
     def deplacer(self): #Bouger la balle dans le canevas pour la raquette
         #-----------------------------Raquette-----------------------------#
         if self.jeu.raquette.collision(self.x+self.rayon) == 1 and self.y-self.rayon*2 >= 485 and self.y-self.rayon*2 <= 505 : #Si la collision revoie 1
-            self.vitesse_x = -1
-            self.vitesse_y = -2
+            self.vitesse_y = -1
+            self.vitesse_x = -2
             self.jeu.canevas.move(self.objet,self.vitesse_x,self.vitesse_y)
         elif self.jeu.raquette.collision(self.x+self.rayon) == 2 and self.y-self.rayon*2 >= 485 and self.y-self.rayon*2 <= 505 : #Si la collision revoie 2
-            self.vitesse_x = -2
-            self.vitesse_y = -1
+            self.vitesse_y = -2
+            self.vitesse_x = -1
             self.jeu.canevas.move(self.objet,self.vitesse_x,self.vitesse_y)
         elif self.jeu.raquette.collision(self.x+self.rayon) == 3 and self.y-self.rayon*2 >= 485 and self.y-self.rayon*2 <= 505 : #Si la collision revoie 3
-            self.vitesse_x = -2
-            self.vitesse_y = 0
+            self.vitesse_y = -2
+            self.vitesse_x = 0
             self.jeu.canevas.move(self.objet,self.vitesse_x,self.vitesse_y)
         elif self.jeu.raquette.collision(self.x+self.rayon) == 4 and self.y-self.rayon*2 >= 485 and self.y-self.rayon*2 <= 505 : #Si la collision revoie 4
-            self.vitesse_x = -2
-            self.vitesse_y = 1
+            self.vitesse_y = -2
+            self.vitesse_x = 1
             self.jeu.canevas.move(self.objet,self.vitesse_x,self.vitesse_y)
         elif self.jeu.raquette.collision(self.x+self.rayon) == 5 and self.y-self.rayon*2 >= 485 and self.y-self.rayon*2 <= 505 : #Si la collision revoie 5
-            self.vitesse_x = -1
-            self.vitesse_y = 2
+            self.vitesse_y = -1
+            self.vitesse_x = 2
             self.jeu.canevas.move(self.objet,self.vitesse_x,self.vitesse_y)
         #-----------------------------Bords de la fenêtre-----------------------------#
         elif self.jeu.hauteur_fenetre <= self.y + self.rayon*2 or self.y <= 0 : #Si la balle touche le haut ou le bas, ça inverse la vitesse en ordonnée
