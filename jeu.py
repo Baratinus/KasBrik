@@ -25,19 +25,21 @@ class Jeu :
         self.touche_possible = ["q","d"]
         self.touche_pressee = {}
 
-    def miseAJour(self):
-        # partie temporaire
-        if self.balle.objet != 0:
-            self.canevas.delete(self.balle.objet)
+        # Premier affichage des objets !! temporaire
         self.balle.dessiner()
         self.raquette.image
-        
-    # Vérification si une touche est appuyer et exécuter l'action
+
+    def miseAJour(self):
+        # Vérification si une touche est appuyer et exécuter l'action
         if self.touche_pressee.get("q") :
             self.raquette.aller_Gauche()
         if self.touche_pressee.get("d") :
             self.raquette.aller_Droite() 
 
+        # Déplacement de la balle
+        self.balle.deplacer()
+
+        # mise à jour du canevas sur la surface
         self.canevas.pack()
 
     @verifierTouche
