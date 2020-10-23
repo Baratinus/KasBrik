@@ -6,7 +6,6 @@ from lives import Lives
 from time import sleep
 import tkinter as tk
 
-
 class Jeu:
     def __init__(self,fenetre):
 
@@ -93,6 +92,7 @@ class Jeu:
         if self.getStateGame() == False :
             self.resetGame()
             self.startGame()
+
 
     def startGame (self) :
         self.running = True

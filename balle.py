@@ -23,6 +23,7 @@ class Balle:
 
     def deplacer(self) : #Bouger la balle dans le canevas pour la raquette
         #-----------------------------Raquette-----------------------------#
+
         #Valeur de la collision avec la raquette.
         v_collision = self.jeu.raquette.collision(self) 
         #Valeur de la collision avec les briques.
@@ -47,6 +48,7 @@ class Balle:
             self.vitesse_x = 2
             self.vitesse_y = -1
             self.vitesse_y = -copysign(self.vitesse_y, v_collision)
+
         #-----------------------------Bords de la fenêtre-----------------------------#
         elif self.y - self.rayon <= 0 : #Si la balle touche le haut, ça inverse la vitesse en ordonnée
             self.vitesse_y = -(self.vitesse_y)
@@ -61,7 +63,6 @@ class Balle:
 
         elif self.jeu.largeur_fenetre() <= self.x + self.rayon or self.x - self.rayon <= 0 : #Si la balle touche la droite ou la gauche, ça inverse la vitesse en abscisse
             self.vitesse_x = -(self.vitesse_x)
-
 
         self.setPosition_x(self.x + self.vitesse_x)
         self.setPosition_y(self.y + self.vitesse_y)
@@ -94,3 +95,4 @@ class Balle:
         self.y = self.jeu.raquette.y - self.jeu.raquette.hauteur - self.rayon #Position y du Centre
         self.vitesse_x = 0 #Vitesse sur l'axe x
         self.vitesse_y = 2 #Vitesse sur l'axe y
+
