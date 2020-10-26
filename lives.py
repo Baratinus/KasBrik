@@ -1,7 +1,14 @@
-from tkinter import PhotoImage
-class Lives :  
+# Import des Librairies nécessaires, et des classes d'autres fichiers.
+from tkinter import PhotoImage # Pour la gestion de l'image des Vies.
 
+class Lives :  
+    '''
+        Classe permettant la gestion des vies dans le Jeu.
+    '''
     def __init__ (self, i_jeu, i_nb_lives, i_x, i_y ) :
+        '''
+            Définition des variables du constructeur.
+        '''
 
         self.jeu = i_jeu
         self.init_lives = i_nb_lives
@@ -26,12 +33,10 @@ class Lives :
         self.nb_lives += 1
         self.update = True
 
-
     def removeLife (self) :
         if self.nb_lives > 0 : 
             self.nb_lives -= 1
             self.update = True
-
 
     def getNbLives (self) :
         return self.nb_lives

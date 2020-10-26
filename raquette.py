@@ -5,12 +5,12 @@ class Raquette :
         classe Raquette visant a créer l'objet Raquette pour le jeu 'casse Brique'.
     '''
 
-    def __init__ (self, jeu) :
+    def __init__ (self, i_jeu) :
         '''
             Fonction d'initialisation avec comme paramètre self et jeu.
         '''
 
-        self.jeu = jeu # Définit l'attribut jeu entrée dans le constructeur.
+        self.jeu = i_jeu # Définit l'attribut jeu entrée dans le constructeur.
         self.largeur = 45 # Définit une largeur à la Raquette.
         self.hauteur = 20 # Définit une hauteur à la Raquette.
         self.vitesse = 15 # Définit une vitesse de déplacement de la Raquette.
