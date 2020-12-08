@@ -1,4 +1,4 @@
-# KasBrik
+KasBrik
 
 Projet casse brique
 
@@ -8,4 +8,4 @@ TODO //
 
     - IMPLEMENTER LES NIVEAUX //  PAUL / CORENTIN
     - IMPLEMENTER UN MOYEN DE GAGNER.
-    - COMMENTER LE CODE (MAX pour celuiu déjà érit)
+

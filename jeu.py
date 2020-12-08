@@ -137,6 +137,7 @@ class Jeu:
         self.niveau.reset() # Réinitialise les paramètres du Niveau.
         self.time_sleep = 0.01 # Réinitialise les paramètres de temps de pause du jeu.
 
+
     def rightClick (self, event):
         '''
             Fonction permettant de rédémarrer le Jeu avec un clic droit si le Jeu est en pause.

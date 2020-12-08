@@ -10,7 +10,6 @@ def close_window():
   '''
       Fonction pour fermer la fenêtre du jeu.  
   '''
-
   jeu.stopGame() # Ferme les processus en cours (sortie de la boucle infinie(While).
   print ("Game closed") 
   fen.destroy() # Ferme la fenêtre affichée sur l'écran.
