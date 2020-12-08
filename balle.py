@@ -1,28 +1,41 @@
-import tkinter as tk
-from math import copysign, pi, sin, cos, atan2, sqrt
-from random import random
-import jeu
+# Import des Librairies nécessaires, et des classes d'autres fichiers.
+import tkinter as tk # Pour la gestion de Fenêtres.
+from math import copysign, pi, sin, cos, atan2, sqrt # Import du module math et des différentes fonctions pour la gestion des collisions.
+from random import random # Import du module random pour 'randomizer' la trajectoire de la balle à chaque collision.
+import jeu # Pour la gestion du Jeu.
 
 class Balle:
-    """
-    Balle
-    """
+    '''
+        Classe Balle visant à créer l'objet Balle pour le jeu 'casse brique'.
+    '''
     
     def __init__(self,i_jeu) :
-        self.jeu = i_jeu #OSKOUR
-        self.rayon = 8 #Taille de la balle
-        self.reset()
-        self.graphics = self._dessiner() #initialisation de la variable local objet
+        '''
+            Définition des variables du constructeur.
+        '''
+        self.jeu = i_jeu # Définit l'attribut jeu entrée dans le constructeur.
+        self.rayon = 8 # Taille du rayon de la Balle.
+        self.reset() # Reinitialise tout les paramètres de la Balle.
+        self.graphics = self._dessiner() # Initie self.graphics avec la méthode locale _dessiner . 
 
-    def _dessiner(self): #Créer la balle dans le canevas
+    def _dessiner(self): 
+        '''
+             Fonction visant à créer le canevas de la Balle.
+        '''
         #crée une balle située en x et y de rayon défini au dessus et de couleur blanche
         return self.jeu.canevas.create_oval(self.x-self.rayon, self.y-self.rayon, self.x+self.rayon, self.y+self.rayon, fill="#ffffff")
     
-    def paint (self) :  #Appelée depuis l'extèrieur
+    def paint (self) :
+        '''
+            Fonction appelée depuis l'extèrieur visant à mettre a jour les coordonnées de la Balle et de la déplacer.
+        '''
         xy_coords = self.jeu.canevas.coords(self.graphics)
         self.jeu.canevas.move(self.graphics,(self.x - self.rayon) - xy_coords[0], (self.y - self.rayon) - xy_coords[1])
 
-    def deplacer(self) : #Bouger la balle dans le canevas pour la raquette
+    def deplacer(self) : 
+        '''
+            Fonction visant à déplacer la balle dans le canevas par rapport a la raquette.
+        '''
 
         #-----------------------------Raquette-----------------------------#
 
@@ -95,8 +108,8 @@ class Balle:
                 # print(f"{v_collision_tuple[0]}, Angle : {v_collision_tuple[1]*180/pi}" )
 
                 #----------------------------- calcul angle de rebond  -----------------------------#
-                
-                # http://gycham.educanet2.ch/java/Rebonds.pdf inspiré de ce Document 
+
+                # http://gycham.educanet2.ch/java/Rebonds.pdf inspiré de ce Document.
                 
                 # vecteur perpendiculaire à la paroi : Up
                 # vecteur tangent à la paroi : Ut
@@ -127,6 +140,9 @@ class Balle:
 
 
     def limitPosition_x(self, x) :
+        '''
+            Fonction définissant la limite des coordonnées en abscisse de la Balle.
+        '''
         r_position = x
         if x > self.jeu.largeur_fenetre() - self.rayon :
             r_position = self.jeu.largeur_fenetre() - self.rayon
@@ -135,6 +151,9 @@ class Balle:
         return r_position
 
     def limitPosition_y(self, y) :
+        '''
+            Fonction définissant la limite des coordonnées en ordonné de la Balle.
+        '''
         r_position = y
         if y > self.jeu.largeur_fenetre() - self.rayon :
             r_position = self.jeu.largeur_fenetre() - self.rayon
@@ -143,13 +162,21 @@ class Balle:
         return r_position
 
     def setPosition_x(self, x) :
+        '''
+            Fonction visant à définir les coordonnées en abscisse de la Balle.
+        '''
         self.x = self.limitPosition_x(x)
 
     def setPosition_y(self, y) :
+        '''
+            Fonction visant à définir les coordonnées en ordonné de la Balle.
+        '''
         self.y = self.limitPosition_y(y)
 
     def reset (self) :
-
+        '''
+            Fonction réinitialisant tout les paramètres de la Balle.
+        '''
         self.x = self.jeu.hauteur_fenetre() / 2 #Position x du Centre
         self.y = self.jeu.raquette.y - self.jeu.raquette.hauteur - self.rayon #Position y du Centre
         self.vitesse = 2
@@ -157,12 +184,16 @@ class Balle:
         self.speedCoords()
 
     def speedCoords (self) :
-
+        '''
+            Fonction définissant la vitesse en ordonné/abscisse de la Balle.
+        '''
         self.vitesse_x = cos(self.angle) * self.vitesse
         self.vitesse_y = sin(self.angle) * self.vitesse
 
     def setNewPosition (self) :
-
+        '''
+            fonction redéfinissant les coordonnées de la Balle.
+        '''
         self.setPosition_x(self.x + self.vitesse_x)
         self.setPosition_y(self.y - self.vitesse_y)
         # print(f'X : {self.x}, Y : {self.y}')

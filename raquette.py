@@ -1,4 +1,5 @@
-from balle import Balle
+# Import des Librairies nécessaires, et des classes d'autres fichiers.
+from balle import Balle # Pour la gestion de la Balle dans Raquette.
 
 class Raquette :
     '''
@@ -14,7 +15,7 @@ class Raquette :
         self.largeur = 45 # Définit une largeur à la Raquette.
         self.hauteur = 20 # Définit une hauteur à la Raquette.
         self.vitesse = 15 # Définit une vitesse de déplacement de la Raquette.
-        self.reset()
+        self.reset() # Réinitialisation de la position de la Raquette.
         self.graphics = self._dessiner() # Initie self.graphics avec la méthode locale _dessiner .
 
 
@@ -50,42 +51,60 @@ class Raquette :
             Fonction visant à définir les coordonnées en abscisse de la Raquette.
         '''
         self.x = self.limitPosition(x) # Définit les coordonnées
-        self.update = True
+        self.update = True # Passe l'état de l'animation à Active.
 
     def setPositionEnter(self, x) :
-        x_position = -1
-        if x > self.jeu.largeur_fenetre() / 2 :
-            x_position = self.jeu.largeur_fenetre()
-        else :
-            x_position = 0
-        self.setPosition(x_position)
+        '''
+            Fonction permettant de maintenir la Raquette à sa position lors de l'entré de la souris de la fenêtre de jeu.
+        '''
+        x_position = -1 # Définition de la valeur par défaut.
+        if x > self.jeu.largeur_fenetre() / 2 : # Si la valeur en abscisse de la souris est supèrieure à la moitié de la largeur de la fenêtre alors :
+            x_position = self.jeu.largeur_fenetre() # la position de la raquette est défini comme étant le bord de la fenêtre Droite.
+        else : # Sinon :
+            x_position = 0 # la position de la raquette est défini comme étant le bord de la fenêtre Gauche.
+        self.setPosition(x_position) # Définit les coordonnées en abscise de la raquette aux coordonnée 'x_position'.
 
     def setPositionLeave(self, x) :
-        x_position = -1
-        if x > self.jeu.largeur_fenetre() / 2 :
-            x_position = self.jeu.largeur_fenetre()
-        else :
-            x_position = 0
-        self.setPosition(x_position)
+        '''
+            Fonction permettant de maintenir la Raquette à sa position lors de la sortie de la souris de la fenêtre de jeu.
+        '''
+        x_position = -1 # Définition de la valeur par défaut.
+        if x > self.jeu.largeur_fenetre() / 2 :  # Si la valeur en abscisse de la souris est supèrieure à la moitié de la largeur de la fenêtre alors :
+            x_position = self.jeu.largeur_fenetre() # la position de la raquette est défini comme étant le bord de la fenêtre Droite.
+        else : # Sinon :
+            x_position = 0 # la position de la raquette est défini comme étant le bord de la fenêtre Gauche.
+        self.setPosition(x_position) # Définit les coordonnées en abscise de la raquette aux coordonnée 'x_position'.
 
     def goRight (self) :
-        self.setPosition(self.x + self.vitesse)
+        '''
+            Fonction visant a se faire déplacer la Raquette vers la Droite.
+        '''
+        self.setPosition(self.x + self.vitesse) # Défini les nouvelles coordonnées de la Raquette en additionnant ses coordonnées et sa vitesse (en pixels).
 
     def goLeft (self) :
-        self.setPosition(self.x - self.vitesse)
+        '''
+            Fonction visant a se faire déplacer la Raquette vers la Gauche.
+        '''
+        self.setPosition(self.x - self.vitesse) # Défini les nouvelles coordonnées de la Raquette en soutrayant sa vitesse (en pixels) de ses coordonnés en abscisse actuels.
 
     def collision (self, balle) -> int :
-        r_collison = 0
+        '''
+            Fonction visant retourner une valeur de collision à la Balle sur la Raquette. Ex : [12345] <-- Raquette et ses valeurs de collision.
+        '''
+        r_collison = 0 # Valeur par défaut de la valeur de retour.
         
-        # Does the ball touch the bar ?
-        if balle.x > self.x - self.largeur / 2 - balle.rayon and balle.x < self.x + self.largeur / 2 + balle.rayon :
-            if balle.y > self.y - self.hauteur / 2 - balle.rayon and balle.y <= self.y + self.hauteur / 2 :
-                r_collison = 1 + 5 / (self.largeur + 2 * balle.rayon) * (balle.x - self.x + self.largeur / 2 + balle.rayon)
-            elif balle.y < self.y + self.hauteur / 2 + balle.rayon and balle.y >= self.y - self.hauteur / 2 :
-                r_collison = (-(1 + 5 / (self.largeur + 2 * balle.rayon) * (balle.x - self.x + self.largeur / 2 + balle.rayon)))
-        return int(r_collison)
+        # La Balle a-t-elle touchée la Raquette ?
+        if balle.x > self.x - self.largeur / 2 - balle.rayon and balle.x < self.x + self.largeur / 2 + balle.rayon : # Si les coordonnées en abscisse de la Balle (intervalle) sont comprise dans celle de la Raquette (intervalle), Alors :
+            if balle.y > self.y - self.hauteur / 2 - balle.rayon and balle.y <= self.y + self.hauteur / 2 : # Si la Balle arrive par le dessus de la Raquette, Alors :
+                r_collison = 1 + 5 / (self.largeur + 2 * balle.rayon) * (balle.x - self.x + self.largeur / 2 + balle.rayon) # La valeur de collision est défini entre [1;5] suivant les différentes valeurs.
+            elif balle.y < self.y + self.hauteur / 2 + balle.rayon and balle.y >= self.y - self.hauteur / 2 : # Si la Balle arrive par le dessous de la Raquette, Alors :
+                r_collison = (-(1 + 5 / (self.largeur + 2 * balle.rayon) * (balle.x - self.x + self.largeur / 2 + balle.rayon))) # La valeur de collision est défini entre [1;5] suivant les différentes valeurs.
+        return int(r_collison) # Retour de la valeure de Collision. [1;5]
 
     def reset (self) :
+        '''
+            Fonction permettant de réinitialiser les coordonnées de la raquette.
+        '''
 
         self.x = self.jeu.largeur_fenetre() / 2 # Définit les coordonnées en abscisse de la raquette à la moitié de sa largeur.
         self.y = self.jeu.hauteur_fenetre() - self.jeu.hauteur_fenetre() / 8 # Définit les coordonnées en ordonné de la raquette à 1/8ème de sa hauteur.
